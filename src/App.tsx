@@ -54,8 +54,10 @@ function App() {
       timerRunning: false,
     });
     const audio = document.getElementById("beep") as HTMLAudioElement;
-    audio.pause();
-    audio.currentTime = 0;
+    if (audio) {
+      audio.pause();
+      audio.currentTime = 0;
+    }
   };
 
   const startStop = () => {
@@ -119,7 +121,7 @@ function App() {
           reset={reset}
           startStop={startStop}
         />
-        <audio src={AlarmSound} className="beep"></audio>
+        <audio id="beep" src={AlarmSound} className="beep"></audio>
       </div>
     </>
   );
